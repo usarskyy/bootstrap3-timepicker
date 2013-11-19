@@ -39,8 +39,8 @@
     _init: function() {
       var self = this;
 
-      if (this.showWidgetOnAddonClick && this.$element.parent().hasClass('.input-group-addon')) {
-        this.$element.parent('.input-group-addon').find('.input-group-addon').on({
+      if (this.showWidgetOnAddonClick && this.$element.parent().hasClass('input-group')) {
+        this.$element.parent('.input-group').find('.input-group-addon').on({
           'click.timepicker': $.proxy(this.showWidget, this)
         });
         this.$element.on({
@@ -845,15 +845,13 @@
     },
 
     showWidget: function() {
-        console.log("trying to show widget");
-
+    
       if (this.isOpen) {
-          console.log("already open");
-        return;
+          return;
       }
 
       if (this.$element.is(':disabled')) {
-          console.log("disabled");
+          return;
       }
 
       // show/hide approach taken by datepicker
@@ -897,10 +895,8 @@
       if (this.template === 'modal' && this.$widget.modal) {
         this.$widget.modal('show').on('hidden', $.proxy(this.hideWidget, this));
       } else {
-          console.log("adding open class");
         if (this.isOpen === false) {
           this.$widget.addClass('open');
-            console.log("class added");
         }
       }
 
