@@ -242,10 +242,10 @@
         templateContent;
 
       if (this.showInputs) {
-        hourTemplate = '<input type="text" class="bootstrap-timepicker-hour form-control" maxlength="2"/>';
-        minuteTemplate = '<input type="text" class="bootstrap-timepicker-minute form-control" maxlength="2"/>';
-        secondTemplate = '<input type="text" class="bootstrap-timepicker-second form-control" maxlength="2"/>';
-        meridianTemplate = '<input type="text" class="bootstrap-timepicker-meridian form-control" maxlength="2"/>';
+        hourTemplate = '<input type="text" class="bootstrap-timepicker-hour" maxlength="2"/>';
+        minuteTemplate = '<input type="text" class="bootstrap-timepicker-minute" maxlength="2"/>';
+        secondTemplate = '<input type="text" class="bootstrap-timepicker-second" maxlength="2"/>';
+        meridianTemplate = '<input type="text" class="bootstrap-timepicker-meridian" maxlength="2"/>';
       } else {
         hourTemplate = '<span class="bootstrap-timepicker-hour"></span>';
         minuteTemplate = '<span class="bootstrap-timepicker-minute"></span>';
@@ -255,16 +255,16 @@
 
       templateContent = '<table>'+
          '<tr>'+
-           '<td><a href="#" data-action="incrementHour"><i class="glyphicon glyphicon-chevron-up"></i></a></td>'+
+           '<td><a href="#" data-action="incrementHour"><i class="fa fa-chevron-circle-up"></i></a></td>'+
            '<td class="separator">&nbsp;</td>'+
-           '<td><a href="#" data-action="incrementMinute"><i class="glyphicon glyphicon-chevron-up"></i></a></td>'+
+           '<td><a href="#" data-action="incrementMinute"><i class="fa fa-chevron-circle-up"></i></a></td>'+
            (this.showSeconds ?
              '<td class="separator">&nbsp;</td>'+
-             '<td><a href="#" data-action="incrementSecond"><i class="glyphicon glyphicon-chevron-up"></i></a></td>'
+             '<td><a href="#" data-action="incrementSecond"><i class="fa fa-chevron-circle-up"></i></a></td>'
            : '') +
            (this.showMeridian ?
              '<td class="separator">&nbsp;</td>'+
-             '<td class="meridian-column"><a href="#" data-action="toggleMeridian"><i class="glyphicon glyphicon-chevron-up"></i></a></td>'
+             '<td class="meridian-column"><a href="#" data-action="toggleMeridian"><i class="fa fa-chevron-circle-up"></i></a></td>'
            : '') +
          '</tr>'+
          '<tr>'+
@@ -281,16 +281,16 @@
            : '') +
          '</tr>'+
          '<tr>'+
-           '<td><a href="#" data-action="decrementHour"><i class="glyphicon glyphicon-chevron-down"></i></a></td>'+
+           '<td><a href="#" data-action="decrementHour"><i class="fa fa-chevron-circle-down"></i></a></td>'+
            '<td class="separator"></td>'+
-           '<td><a href="#" data-action="decrementMinute"><i class="glyphicon glyphicon-chevron-down"></i></a></td>'+
+           '<td><a href="#" data-action="decrementMinute"><i class="fa fa-chevron-circle-down"></i></a></td>'+
            (this.showSeconds ?
             '<td class="separator">&nbsp;</td>'+
-            '<td><a href="#" data-action="decrementSecond"><i class="glyphicon glyphicon-chevron-down"></i></a></td>'
+            '<td><a href="#" data-action="decrementSecond"><i class="fa fa-chevron-circle-down"></i></a></td>'
            : '') +
            (this.showMeridian ?
             '<td class="separator">&nbsp;</td>'+
-            '<td><a href="#" data-action="toggleMeridian"><i class="glyphicon glyphicon-chevron-down"></i></a></td>'
+            '<td><a href="#" data-action="toggleMeridian"><i class="fa fa-chevron-circle-down"></i></a></td>'
            : '') +
          '</tr>'+
        '</table>';
@@ -845,12 +845,15 @@
     },
 
     showWidget: function() {
+        console.log("trying to show widget");
+
       if (this.isOpen) {
+          console.log("already open");
         return;
       }
 
       if (this.$element.is(':disabled')) {
-        return;
+          console.log("disabled");
       }
 
       // show/hide approach taken by datepicker
@@ -894,8 +897,10 @@
       if (this.template === 'modal' && this.$widget.modal) {
         this.$widget.modal('show').on('hidden', $.proxy(this.hideWidget, this));
       } else {
+          console.log("adding open class");
         if (this.isOpen === false) {
           this.$widget.addClass('open');
+            console.log("class added");
         }
       }
 
