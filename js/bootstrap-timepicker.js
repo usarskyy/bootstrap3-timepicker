@@ -821,9 +821,15 @@
           minute = timeArray[1] ? timeArray[1].toString() : '';
           second = timeArray[2] ? timeArray[2].toString() : '';
         } else {
-          hour = '00';
-          minute = timeArray[0] ? timeArray[0].toString() : '';
-          second = timeArray[1] ? timeArray[1].toString() : '';
+		  hour = '00';
+		  
+		  if(timeArray.length === 3) {
+            minute = timeArray[1] ? timeArray[1].toString() : '';
+            second = timeArray[2] ? timeArray[2].toString() : '';		    
+		  } else {
+			minute = timeArray[0] ? timeArray[0].toString() : '';
+            second = timeArray[1] ? timeArray[1].toString() : '';
+		  }
 		}
 		
         // idiot proofing
